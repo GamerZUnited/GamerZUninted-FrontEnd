@@ -5,6 +5,7 @@ import {pushState } from 'redux-router'
 
 import {loginWithPassword, createAccount} from '../models/Auth'
 import * as Messages from '../models/Messages'
+import * as Xbox from '../models/xbox'
 
 const URL = 'https://glacial-bayou-9575.herokuapp.com'
 
@@ -64,17 +65,25 @@ export const login = (email, password) => dispatch => {
   // })
 }
 
-export const setPost = (uid, game, message) => {
-  Messages.setPost(uid, game, message)
+export const setPost = (uid, game, message, gamerTag) => {
+  console.log('gamerTag action ', gamerTag);
+
+  //get the gamertag id before posting it to firebase
+  // gamerTag: Slippingfever29
+  Xbox.getGamerTag(gamerTag).then( (gamerTagData) => {
+    Messages.setPost(uid, game, message, gamerTag, gamerTagData.data.xuid)
+    // dispatch({
+    //     type: SET_LOGIN,
+    //     logged: true,
+    //     user: userData
+    //   })
+  });
+
 }
 
 export const listenForPosts = (uid, dispatch) => {
 
   Messages.listenForPosts( (user, post) => {
-
-    if(uid === user){
-      return
-    }
     dispatch({
       type: NEW_POST,
       user, post
@@ -94,6 +103,18 @@ export const listenForMessages = (uid, dispatch) => {
 
 export const sendMessage = (uid, toUser, message) => {
   Messages.sendMessage(uid, toUser, message)
+}
+
+export const getGamerTag = (gamerTag) => {
+  Xbox.getGamerTag(gamerTag).then( (gamerTagData) => {
+
+    return gamerTagData.data.xuid;
+    // dispatch({
+    //     type: SET_LOGIN,
+    //     logged: true,
+    //     user: userData
+    //   })
+  });
 }
 
 export const load = () => {

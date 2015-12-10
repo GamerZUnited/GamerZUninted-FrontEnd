@@ -2,8 +2,9 @@
 import * as refs from './refs'
 
 
-export const setPost = (uid, game, message) => {
-  refs.posts.child(uid).set({game, message})
+export const setPost = (uid, game, message, gamerTag, xuid) => {
+  console.log('model messages ', gamerTag)
+  refs.posts.child(uid).set({game, message, gamerTag, xuid})
 }
 
 export const listenForPosts = (cb) => {
