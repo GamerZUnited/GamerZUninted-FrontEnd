@@ -1,0 +1,13 @@
+$primary-white: white;
+
+.gamerTag-link {
+  color: $primary-white;
+  background-color: black;
+  font-weight: bold;
+
+  &:hover {
+    background-color: $primary-white;
+    color: black;
+    text-decoration: none;
+  }
+}

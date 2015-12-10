@@ -4,6 +4,8 @@ import {pushState } from 'redux-router'
 import * as Actions from '../actions/AppActions'
 import _ from 'lodash'
 
+import '../css/post.scss';
+
 @connect(
   state => ({
     login: state.login,
@@ -31,17 +33,34 @@ class Posts extends Component {
     const uid = (loginJS.user) ? loginJS.user.uid:null
 
     console.log(messages.toJS())
+    // send the message tot the user by following this url
+    // https://account.xbox.com/Messages?gamerTag=${gamerTag}
 
     const postsData = _.map(posts.toJS(), (post, key) => {
-      return(<div  key={key} style={{color: 'white'}}>
+      var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
+      return <div  key={key} style={{color: 'white', borderBottom: '1px solid black'}}>
         <h1>{post.game}</h1>
-        <h2>{post.message}</h2>
-        </div>)
+        <p>
+          {post.message}
+        </p>
+        <p>
+          {post.gamerTag}
+          <a className="gamerTag-link" href={gamerTagMessageLink} target="_blank">
+            Message {post.gamerTag} via Xbox
+          </a>
+        </p>
+        <p>{post.xuid}</p>
+      </div>
     })
 
     const sendMessage= (user) => (event) => {
       console.log('sending message', this.refs.message.value)
       Actions.sendMessage(uid, user, this.refs.message.value)
+    }
+
+    const getGamerTag= (gamerTag) => (event) => {
+      console.log('Should get gamer tag ', gamerTag);
+      Actions.getGamerTag(gamerTag);
     }
 
     const messagesData = _.map(messages.toJS(), ( userMessages, user) => {
@@ -59,6 +78,7 @@ class Posts extends Component {
 
           <input type="text" ref="message" style={{color: 'black'}}/>
           <input style={{color:"black"}} type="button" onClick={sendMessage(user)} value='Send'/>
+          <input style={{color:"black"}} type="button" onClick={getGamerTag('Slippingfever29')} value='Get GamerTag'/>
         </div>
       )
       // return(<div  key={key} style={{color: 'white'}}>
@@ -69,16 +89,18 @@ class Posts extends Component {
 
 
     const handleSetPost = () => {
-      const {game, message} = this.refs
-      Actions.setPost(uid, game.value, message.value)
+      const {gameName, gameMessage, gamerTag} = this.refs;
+
+      Actions.setPost(uid, gameName.value, gameMessage.value, gamerTag.value);
 
     }
 
     return (
       <div style={{width:"300px", border:"1px solid black"}}>
-        <input type="text" placeholder='game' ref="game"/>
-        <input type="text" placeholder="message" ref="message" />
-        <input type="button" value="Set Post" onClick={handleSetPost}/>
+        <input type="text" placeholder="gamerTag" ref="gamerTag" />
+        <input type="text" placeholder='game' ref="gameName"/>
+        <input type="text" placeholder="message" ref="gameMessage" />
+        <input type="button" value="Set Post" onClick={handleSetPost.bind(this)}/>
         {postsData}
         {messagesData}
       </div>
