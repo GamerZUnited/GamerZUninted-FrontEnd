@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {pushState } from 'redux-router'
 import * as Actions from '../actions/AppActions'
 import _ from 'lodash'
+import * as Xbox from '../models/xbox';
 
 import '../css/post.scss';
 
@@ -10,12 +11,13 @@ import '../css/post.scss';
   state => ({
     login: state.login,
     messages: state.messages,
-    posts: state.posts
+    posts: state.posts,
+    gamerCardData: state.gamerCardData
   })
 )
 class Posts extends Component {
   componentWillMount(){
-    const {login, posts, dispatch} = this.props
+    const {login, posts, dispatch, gamerCardData} = this.props
     console.log('login info', login.toJS())
 
     if(!login.get('logged')){
@@ -27,17 +29,21 @@ class Posts extends Component {
   }
 
   render(){
-    const {posts, messages, login} = this.props
-    const loginJS = login.toJS()
+    const {posts, messages, login, gamerCardData} = this.props
+    const loginJS = login.toJS();
 
     const uid = (loginJS.user) ? loginJS.user.uid:null
 
     console.log(messages.toJS())
+    console.log('GamerCARD!!!!')
     // send the message tot the user by following this url
     // https://account.xbox.com/Messages?gamerTag=${gamerTag}
 
+
+
     const postsData = _.map(posts.toJS(), (post, key) => {
       var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
+
       return <div  key={key} style={{color: 'white', borderBottom: '1px solid black'}}>
         <h1>{post.game}</h1>
         <p>
@@ -50,6 +56,10 @@ class Posts extends Component {
           </a>
         </p>
         <p>{post.xuid}</p>
+        <p>Tier: {gamerCardData.tier}</p>
+        <p>Gamerscore: {gamerCardData.gamerscore}</p>
+        <p>Avatar: <img src={gamerCardData.avatarBodyImagePath} /></p>
+
       </div>
     })
 
