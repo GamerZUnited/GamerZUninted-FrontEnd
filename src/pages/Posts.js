@@ -44,22 +44,24 @@ class Posts extends Component {
     const postsData = _.map(posts.toJS(), (post, key) => {
       var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
 
-      return <div  key={key} style={{color: 'white', borderBottom: '1px solid black'}}>
+      return <div className="postDiv"  key={key} style={{color: 'white', borderBottom: '1px solid black'}}>
         <h1>{post.game}</h1>
         <p>
           {post.message}
         </p>
         <p>
           {post.gamerTag}
+          <br></br>
           <a className="gamerTag-link" href={gamerTagMessageLink} target="_blank">
             Message {post.gamerTag} via Xbox
           </a>
         </p>
         <p>{post.xuid}</p>
-        <p>Tier: {gamerCardData.tier}</p>
-        <p>Gamerscore: {gamerCardData.gamerscore}</p>
-        <p>Avatar: <img src={gamerCardData.avatarBodyImagePath} /></p>
-
+        <div className="x">
+          <p>Tier: {gamerCardData.tier}</p>
+          <p>Gamerscore: {gamerCardData.gamerscore}</p>
+          <img className="avatarImg" src={gamerCardData.avatarBodyImagePath} />
+        </div>
       </div>
     })
 
@@ -106,10 +108,12 @@ class Posts extends Component {
     }
 
     return (
-      <div style={{width:"300px", border:"1px solid black"}}>
-        <input type="text" placeholder="gamerTag" ref="gamerTag" />
-        <input type="text" placeholder='game' ref="gameName"/>
-        <input type="text" placeholder="message" ref="gameMessage" />
+      <div style={{width:"200px", height:"80px", maxHeight: "80px", border:"1px solid black"}}>
+        <div>
+          <input type="text" placeholder="gamerTag" ref="gamerTag" />
+          <input type="text" placeholder='game' ref="gameName"/>
+          <input type="text" placeholder="message" ref="gameMessage" />
+        </div>
         <input type="button" value="Set Post" onClick={handleSetPost.bind(this)}/>
         {postsData}
         {messagesData}
