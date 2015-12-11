@@ -10,5 +10,6 @@ export default keyMirror({
   DELETE_ITEM : true,
   NEW_POST    : true,
   NEW_MESSAGE : true,
+  GET_GAMERCARD : true,
 
 })

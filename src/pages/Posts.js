@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {pushState } from 'redux-router'
 import * as Actions from '../actions/AppActions'
 import _ from 'lodash'
+import * as Xbox from '../models/xbox';
 
 import '../css/post.scss';
 
@@ -33,11 +34,19 @@ class Posts extends Component {
     const uid = (loginJS.user) ? loginJS.user.uid:null
 
     console.log(messages.toJS())
+    console.log('GamerCARD!!!!')
     // send the message tot the user by following this url
     // https://account.xbox.com/Messages?gamerTag=${gamerTag}
 
+
+
     const postsData = _.map(posts.toJS(), (post, key) => {
+      const gamerCardTemplate = Xbox.getGamerCard(post.xuid).then( (gamerCard) => {
+        return gamerCard.data;
+      });
       var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
+
+      debugger;
       return <div  key={key} style={{color: 'white', borderBottom: '1px solid black'}}>
         <h1>{post.game}</h1>
         <p>

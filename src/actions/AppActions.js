@@ -87,7 +87,7 @@ export const listenForPosts = (uid, dispatch) => {
     dispatch({
       type: NEW_POST,
       user, post
-    })
+    });
   })
 }
 
