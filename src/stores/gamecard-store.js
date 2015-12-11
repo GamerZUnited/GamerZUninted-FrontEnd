@@ -10,8 +10,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
 
     case GET_GAMERCARD:
-      console.log(fromJS(gamerCardData));
-      return state.setIn(fromJS(gamerCardData))
+      return gamerCardData
 
     default:
       return state

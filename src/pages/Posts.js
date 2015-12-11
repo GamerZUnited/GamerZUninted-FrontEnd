@@ -30,9 +30,7 @@ class Posts extends Component {
 
   render(){
     const {posts, messages, login, gamerCardData} = this.props
-    const loginJS = login.toJS()
-    console.log('------------------------', gamerCardData);
-    console.log('------------------------', gamerCardData.toJS());
+    const loginJS = login.toJS();
 
     const uid = (loginJS.user) ? loginJS.user.uid:null
 
@@ -58,6 +56,10 @@ class Posts extends Component {
           </a>
         </p>
         <p>{post.xuid}</p>
+        <p>Tier: {gamerCardData.tier}</p>
+        <p>Gamerscore: {gamerCardData.gamerscore}</p>
+        <p>Avatar: <img src={gamerCardData.avatarBodyImagePath} /></p>
+
       </div>
     })
 
