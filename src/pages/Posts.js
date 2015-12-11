@@ -11,12 +11,13 @@ import '../css/post.scss';
   state => ({
     login: state.login,
     messages: state.messages,
-    posts: state.posts
+    posts: state.posts,
+    gamerCardData: state.gamerCardData
   })
 )
 class Posts extends Component {
   componentWillMount(){
-    const {login, posts, dispatch} = this.props
+    const {login, posts, dispatch, gamerCardData} = this.props
     console.log('login info', login.toJS())
 
     if(!login.get('logged')){
@@ -28,8 +29,10 @@ class Posts extends Component {
   }
 
   render(){
-    const {posts, messages, login} = this.props
+    const {posts, messages, login, gamerCardData} = this.props
     const loginJS = login.toJS()
+    console.log('------------------------', gamerCardData);
+    console.log('------------------------', gamerCardData.toJS());
 
     const uid = (loginJS.user) ? loginJS.user.uid:null
 
@@ -41,12 +44,8 @@ class Posts extends Component {
 
 
     const postsData = _.map(posts.toJS(), (post, key) => {
-      const gamerCardTemplate = Xbox.getGamerCard(post.xuid).then( (gamerCard) => {
-        return gamerCard.data;
-      });
       var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
 
-      debugger;
       return <div  key={key} style={{color: 'white', borderBottom: '1px solid black'}}>
         <h1>{post.game}</h1>
         <p>
