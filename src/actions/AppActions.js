@@ -1,5 +1,5 @@
 
-import {SET_LOGIN, NEW_POST, NEW_MESSAGE} from '../constants/ActionTypes'
+import {SET_LOGIN, NEW_POST, NEW_MESSAGE, GET_GAMERCARD} from '../constants/ActionTypes'
 import axios from 'axios'
 import {pushState } from 'redux-router'
 
@@ -87,7 +87,14 @@ export const listenForPosts = (uid, dispatch) => {
     dispatch({
       type: NEW_POST,
       user, post
-    })
+    });
+    Xbox.getGamerCard(post.xuid).then( (gamerCard) => {
+      var gamerCardData = gamerCard.data;
+      dispatch({
+        type: GET_GAMERCARD,
+        gamerCardData
+      })
+    });
   })
 }
 
