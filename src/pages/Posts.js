@@ -44,14 +44,13 @@ class Posts extends Component {
     const postsData = _.map(posts.toJS(), (post, key) => {
       var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
 
-      return <div className="postDiv"  key={key} style={{color: 'white', borderBottom: '1px solid black'}}>
-        <h1>{post.game}</h1>
-        <p>
+      return <div className="posts">
+        <div className="postDiv"  key={key}>
+        <h1 className="gameTitle">{post.game}</h1>
+        <p className="userMessage">
           {post.message}
         </p>
         <p>
-          {post.gamerTag}
-          <br></br>
           <a className="gamerTag-link" href={gamerTagMessageLink} target="_blank">
             Message {post.gamerTag} via Xbox
           </a>
@@ -63,6 +62,7 @@ class Posts extends Component {
           <img className="avatarImg" src={gamerCardData.avatarBodyImagePath} />
         </div>
       </div>
+    </div>
     })
 
     const sendMessage= (user) => (event) => {
@@ -110,11 +110,20 @@ class Posts extends Component {
     return (
       <div style={{width:"200px", height:"80px", maxHeight: "80px", border:"1px solid black"}}>
         <div>
+          <label>GamerTag</label>
           <input type="text" placeholder="gamerTag" ref="gamerTag" />
-          <input type="text" placeholder='game' ref="gameName"/>
-          <input type="text" placeholder="message" ref="gameMessage" />
+          <label>Game Name</label>
+            <select name="gameNames" ref="gameName">
+              <option value="Madden16">Madden 16</option>
+              <option value="NBA2k16">NBA 2K16</option>
+              <option value="BLOPS">Call of Duty: BO3</option>
+              <option value="BLOPS">Call of Duty: BO3</option>
+              <option value="BLOPS">Call of Duty: BO3</option>
+            </select>
+          <label>Your Search Content</label>
+          <input type="text" placeholder="Message" ref="gameMessage" />
         </div>
-        <input type="button" value="Set Post" onClick={handleSetPost.bind(this)}/>
+        <input className="postButton" type="button" value="Set Post" onClick={handleSetPost.bind(this)}/>
         {postsData}
         {messagesData}
       </div>
