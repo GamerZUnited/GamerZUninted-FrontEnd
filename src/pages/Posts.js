@@ -12,20 +12,6 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 import '../css/post.scss';
 
-let injectTapEventPlugin = require("react-tap-event-plugin");
-
-injectTapEventPlugin();
-
-let menuItems = [
-   { payload: '1', text: 'Madden16' },
-   { payload: '2', text: 'Every Night' },
-   { payload: '3', text: 'Weeknights' },
-   { payload: '4', text: 'Weekends' },
-   { payload: '5', text: 'Weekly' },
-];
-
-
-
 @connect(
   state => ({
     login: state.login,

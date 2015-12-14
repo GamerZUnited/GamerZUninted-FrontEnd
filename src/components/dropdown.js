@@ -1,12 +1,18 @@
 import React from 'react';
 import DropDownMenu from 'material-ui/lib/drop-down-menu';
 
+let injectTapEventPlugin = require("react-tap-event-plugin");
+
+injectTapEventPlugin();
+
 let menuItems = [
-   { payload: '1', text: 'Never' },
-   { payload: '2', text: 'Every Night' },
-   { payload: '3', text: 'Weeknights' },
-   { payload: '4', text: 'Weekends' },
-   { payload: '5', text: 'Weekly' },
+   { payload: '1', text: 'Game Option' },
+   { payload: '1', text: 'Madden 16' },
+   { payload: '2', text: 'Call of Duty: Black Ops 3' },
+   { payload: '3', text: 'GTA 5' },
+   { payload: '4', text: 'Halo 5' },
+   { payload: '5', text: 'Star Wars Battlefront' },
+   { payload: '6', text: 'NBA 2K16' },
 ];
 
 let selectedMenuItemText = menuItems[0].text;
@@ -29,7 +35,7 @@ class DropDown extends React.Component {
   render() {
     return (
       <DropDownMenu
-        ref="dropDownMenu"
+        name="Game Option"
         menuItems={menuItems}
         onChange={dropDown}
         />
