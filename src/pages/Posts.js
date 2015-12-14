@@ -5,6 +5,8 @@ import * as Actions from '../actions/AppActions'
 import _ from 'lodash'
 import * as Xbox from '../models/xbox';
 import DropDown from '../components/dropdown';
+import GamerTagField from '../components/newtextfield';
+import CommentField from '../components/commentstextfield';
 // import DropDown from '../components/dropdown';
 
 import '../css/post.scss';
@@ -123,25 +125,27 @@ class Posts extends Component {
     const handleSetPost = () => {
       const {gameName, gameMessage, gamerTag} = this.refs;
 
+
       console.log('gameName', gameName.getSelectedItem());
+
+      let gamerTagText = gamerTag.getSelectedItem();
 
       let gameNameText = gameName.getSelectedItem();
 
-      Actions.setPost(uid, gameNameText, gameMessage.value, gamerTag.value);
+      let gameMessageText = gameMessage.getSelectedItem();
+
+      Actions.setPost(uid, gameNameText, gameMessageText, gamerTagText);
 
     }
 
     return (
       <div>
         <div>
-          <label>GamerTag</label>
-          <input type="text" placeholder="gamerTag" ref="gamerTag" />
-          <label>Game Title</label>
+          <GamerTagField ref="gamerTag"/>
           <br></br>
           <DropDown className="dropdownmenuz" ref="gameName"/>
           <br></br>
-          <label>Your Search Content</label>
-          <input type="text" placeholder="Message" ref="gameMessage" />
+          <CommentField ref="gameMessage"/>
         </div>
         <input className="postButton" type="button" value="Set Post" onClick={handleSetPost.bind(this)}/>
         {postsData}
