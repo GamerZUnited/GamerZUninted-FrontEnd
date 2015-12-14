@@ -7,6 +7,7 @@ import * as Xbox from '../models/xbox';
 import DropDown from '../components/dropdown';
 import GamerTagField from '../components/newtextfield';
 import CommentField from '../components/commentstextfield';
+import FlatButton from 'material-ui/lib/flat-button';
 // import DropDown from '../components/dropdown';
 
 import '../css/post.scss';
@@ -147,7 +148,7 @@ class Posts extends Component {
           <br></br>
           <CommentField ref="gameMessage"/>
         </div>
-        <input className="postButton" type="button" value="Set Post" onClick={handleSetPost.bind(this)}/>
+        <FlatButton label="SUBMIT" onClick={handleSetPost.bind(this)}/>
         {postsData}
         {messagesData}
       </div>
