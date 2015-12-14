@@ -4,7 +4,7 @@ import {pushState } from 'redux-router'
 import * as Actions from '../actions/AppActions'
 import _ from 'lodash'
 import * as Xbox from '../models/xbox';
-import DropDownMenu from 'material-ui/lib/drop-down-menu';
+import DropDown from '../components/dropdown';
 // import DropDown from '../components/dropdown';
 
 import '../css/post.scss';
@@ -20,6 +20,7 @@ let menuItems = [
    { payload: '4', text: 'Weekends' },
    { payload: '5', text: 'Weekly' },
 ];
+
 
 
 @connect(
@@ -114,11 +115,19 @@ class Posts extends Component {
       //   </div>)
     })
 
+    const handleNav = (event, selectedIndex, menuItem) => {
+      console.log(event, selectedIndex, menuItem);
+    }
+
 
     const handleSetPost = () => {
       const {gameName, gameMessage, gamerTag} = this.refs;
 
-      Actions.setPost(uid, gameName.value, gameMessage.value, gamerTag.value);
+      console.log('gameName', gameName.getSelectedItem());
+
+      let gameNameText = gameName.getSelectedItem();
+
+      Actions.setPost(uid, gameNameText, gameMessage.value, gamerTag.value);
 
     }
 
@@ -129,7 +138,7 @@ class Posts extends Component {
           <input type="text" placeholder="gamerTag" ref="gamerTag" />
           <label>Game Title</label>
           <br></br>
-          <DropDownMenu className="dropdownmenuz" menuItems={menuItems}/>
+          <DropDown className="dropdownmenuz" ref="gameName"/>
           <br></br>
           <label>Your Search Content</label>
           <input type="text" placeholder="Message" ref="gameMessage" />
