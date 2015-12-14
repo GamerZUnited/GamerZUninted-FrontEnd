@@ -1,5 +1,9 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+
 body {
-  padding: 50px;
+  padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url("https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=&url=http%3A%2F%2Fwww.3djuegos.com%2Fcomunidad-foros%2Ftema%2F38086990%2F0%2Fdestacarias-algun-logro-en-tu-vida-videojueguil%2F&psig=AFQjCNE960QsJgrpWs6fzHa9X5RA3-5UHg&ust=1450191375781106");
   background-size: 100%;
@@ -30,8 +34,8 @@ form {
   width: 350px;
 }
 form label {
-  border-top: 2px solid #3498db;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  // border-top: 2px solid #3498db;
+  // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   color: #2c3e50;
   display: block;
   font-family: "Lato", "Helvetica", sans-serif;
@@ -331,6 +335,57 @@ form input[type="button"]:hover {
   border: 1px solid red;
 }
 
+.posts {
+  @include outer-container;
+  width: 380px;
+}
+
 .postDiv {
-  background-color: red !important;
+  @include span-columns(3);
+  @include omega(4n);
+  border-radius: 3px;
+  width: 100%;
+  background-color: black !important;
+}
+
+.postDiv:hover {
+  background-color: gray !important;
+}
+
+input {
+  width: 366px;
+  height: 34px;
+  margin-top: 5%;
+  border-radius: 6px;
+}
+.postButton {
+  background-color: #788C97;
+  color: white;
+  font-weight: bold;
+  margin-top: 5%;
+}
+
+select {
+  width: 366px;
+  height: 34px;
+  margin-top: 5%;
+  border-radius: 6px;
+}
+
+p {
+  color: red !important;
+}
+
+.userMessage {
+  color: yellow !important;
+  font-size: 16px;
+}
+
+h1 {
+  color: white !important;
+}
+
+
+label {
+  color: white !important;
 }
