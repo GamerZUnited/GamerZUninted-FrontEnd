@@ -5,7 +5,6 @@ import TextField from 'material-ui/lib/text-field';
 let selectedInputText = '';
 //
 let textChange = function(event) {
-    console.log(event.target.value);
     selectedInputText = event.target.value;
 };
 

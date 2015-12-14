@@ -66,7 +66,7 @@ export const login = (email, password) => dispatch => {
 }
 
 export const setPost = (uid, game, message, gamerTag) => {
-  console.log('gamerTag action ', gamerTag);
+  console.log('gamerTag action ', gamerTag, 'uid', uid);
 
   //get the gamertag id before posting it to firebase
   // gamerTag: Slippingfever29
@@ -81,6 +81,8 @@ export const setPost = (uid, game, message, gamerTag) => {
 
 }
 
+const gamerCardData = {};
+
 export const listenForPosts = (uid, dispatch) => {
 
   Messages.listenForPosts( (user, post) => {
@@ -89,7 +91,9 @@ export const listenForPosts = (uid, dispatch) => {
       user, post
     });
     Xbox.getGamerCard(post.xuid).then( (gamerCard) => {
-      var gamerCardData = gamerCard.data;
+      // var gamerCardData = gamerCard.data;
+      console.log('======!!!!!!|||||||| >>>>>gamercard:', gamerCard.data);
+      gamerCardData[gamerCard.data.gamertag] = gamerCard.data;
       dispatch({
         type: GET_GAMERCARD,
         gamerCardData

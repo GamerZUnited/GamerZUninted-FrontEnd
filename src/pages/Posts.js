@@ -49,6 +49,13 @@ class Posts extends Component {
     const postsData = _.map(posts.toJS(), (post, key) => {
       var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
 
+      console.log('GGGGGGGGGGG ===>', gamerCardData);
+      var gamerCard = gamerCardData[post.gamerTag];
+
+      if (!gamerCard) {
+        gamerCard = {tier: '', gamerscore: '', avatarBodyImagePath: ''};
+      }
+
       return <div className="posts">
         <div className="postDiv"  key={key}>
         <h1 className="gameTitle">{post.game}</h1>
@@ -60,11 +67,10 @@ class Posts extends Component {
             Message {post.gamerTag} via Xbox
           </a>
         </p>
-        <p>{post.xuid}</p>
         <div className="x">
-          <p>Tier: {gamerCardData.tier}</p>
-          <p>Gamerscore: {gamerCardData.gamerscore}</p>
-          <img className="avatarImg" src={gamerCardData.avatarBodyImagePath} />
+          <p>Tier: {gamerCard.tier}</p>
+          <p>Gamerscore: {gamerCard.gamerscore}</p>
+          <img className="avatarImg" src={gamerCard.avatarBodyImagePath} />
         </div>
       </div>
     </div>
@@ -127,16 +133,18 @@ class Posts extends Component {
 
     return (
       <div>
-        <div>
-          <GamerTagField ref="gamerTag"/>
-          <br></br>
-          <DropDown className="dropdownmenuz" ref="gameName"/>
-          <br></br>
-          <CommentField ref="gameMessage"/>
+        <div className="inputForm">
+          <div>
+            <GamerTagField ref="gamerTag"/>
+            <br></br>
+            <DropDown className="dropdownmenuz" ref="gameName"/>
+            <br></br>
+            <CommentField ref="gameMessage"/>
+          </div>
+          <FlatButton label="SUBMIT" onClick={handleSetPost.bind(this)}/>
         </div>
-        <FlatButton label="SUBMIT" onClick={handleSetPost.bind(this)}/>
-        {postsData}
-        {messagesData}
+      {postsData}
+      {messagesData}
       </div>
     )
 
