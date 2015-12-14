@@ -48,6 +48,7 @@ class Posts extends Component {
 
     const postsData = _.map(posts.toJS(), (post, key) => {
       var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
+      var gamerProfilePic = `http://avatar.xboxlive.com/avatar/${post.gamerTag}/avatar-body.png`;
 
       console.log('GGGGGGGGGGG ===>', gamerCardData);
       var gamerCard = gamerCardData[post.gamerTag];
@@ -70,7 +71,7 @@ class Posts extends Component {
         <div className="x">
           <p>Tier: {gamerCard.tier}</p>
           <p>Gamerscore: {gamerCard.gamerscore}</p>
-          <img className="avatarImg" src={gamerCard.avatarBodyImagePath} />
+          <img className="avatarImg" src={gamerProfilePic} />
         </div>
       </div>
     </div>
