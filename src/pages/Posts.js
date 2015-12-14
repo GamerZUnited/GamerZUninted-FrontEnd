@@ -4,8 +4,23 @@ import {pushState } from 'redux-router'
 import * as Actions from '../actions/AppActions'
 import _ from 'lodash'
 import * as Xbox from '../models/xbox';
+import DropDownMenu from 'material-ui/lib/drop-down-menu';
+// import DropDown from '../components/dropdown';
 
 import '../css/post.scss';
+
+let injectTapEventPlugin = require("react-tap-event-plugin");
+
+injectTapEventPlugin();
+
+let menuItems = [
+   { payload: '1', text: 'Madden16' },
+   { payload: '2', text: 'Every Night' },
+   { payload: '3', text: 'Weeknights' },
+   { payload: '4', text: 'Weekends' },
+   { payload: '5', text: 'Weekly' },
+];
+
 
 @connect(
   state => ({
@@ -108,18 +123,14 @@ class Posts extends Component {
     }
 
     return (
-      <div style={{width:"200px", height:"80px", maxHeight: "80px", border:"1px solid black"}}>
+      <div>
         <div>
           <label>GamerTag</label>
           <input type="text" placeholder="gamerTag" ref="gamerTag" />
-          <label>Game Name</label>
-            <select name="gameNames" ref="gameName">
-              <option value="Madden16">Madden 16</option>
-              <option value="NBA2k16">NBA 2K16</option>
-              <option value="BLOPS">Call of Duty: BO3</option>
-              <option value="BLOPS">Call of Duty: BO3</option>
-              <option value="BLOPS">Call of Duty: BO3</option>
-            </select>
+          <label>Game Title</label>
+          <br></br>
+          <DropDownMenu className="dropdownmenuz" menuItems={menuItems}/>
+          <br></br>
           <label>Your Search Content</label>
           <input type="text" placeholder="Message" ref="gameMessage" />
         </div>
