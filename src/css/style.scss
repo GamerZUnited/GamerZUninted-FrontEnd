@@ -371,7 +371,7 @@ p {
 
 .overallApp {
   margin: 0;
-  @include breakpoint(425px) {
+  @include breakpoint(1.5dppx)  {
     margin: auto 10%;
    }
 }
