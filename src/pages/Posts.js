@@ -8,13 +8,14 @@ import DropDown from '../components/dropdown';
 import GamerTagField from '../components/newtextfield';
 import CommentField from '../components/commentstextfield';
 import FlatButton from 'material-ui/lib/flat-button';
-const Card = require('material-ui/lib/card/card');
-const CardActions = require('material-ui/lib/card/card-actions');
-const CardExpandable = require('material-ui/lib/card/card-expandable');
-const CardHeader = require('material-ui/lib/card/card-header');
-const CardMedia = require('material-ui/lib/card/card-media');
-const CardText = require('material-ui/lib/card/card-text');
-const CardTitle = require('material-ui/lib/card/card-title');
+import Card from 'material-ui/lib/card/card';
+import CardActions from 'material-ui/lib/card/card-actions';
+import CardExpandable from 'material-ui/lib/card/card-expandable';
+import CardHeader from 'material-ui/lib/card/card-header';
+import CardMedia from 'material-ui/lib/card/card-media';
+import CardText from 'material-ui/lib/card/card-text';
+import CardTitle from 'material-ui/lib/card/card-title';
+import Avatar from 'material-ui/lib/avatar';
 // import DropDown from '../components/dropdown';
 
 import '../css/post.scss';
@@ -64,25 +65,23 @@ class Posts extends Component {
         gamerCard = {tier: '', gamerscore: '', avatarBodyImagePath: ''};
       }
 
-      return <div className="posts">
-        <div className="postDiv"  key={key}>
-        <img className="avatarImg" src={gamerProfilePic} />
-        <div className="gameTitle">{post.game}</div>
-        <div className="userMessage">
-          {post.message}
-        </div>
-        <p>
-          <span>{post.gamerTag}</span>
-          <a className="gamerTag-link" href={gamerTagMessageLink} target="_blank">
-            <i className="fa fa-envelope-o"></i>
-          </a>
-        </p>
-        <div className="x">
-          <p>Tier: {gamerCard.tier}</p>
-          <p>Gamerscore: {gamerCard.gamerscore}</p>
-        </div>
-      </div>
-    </div>
+      return <div>
+      <Card initiallyExpanded={true}>
+  <CardHeader
+    title={post.game}
+    subtitle={post.gamerTag}
+    avatar={gamerProfilePic}
+    actAsExpander={true}
+    showExpandableButton={true}>
+  </CardHeader>
+  <CardText expandable={true}>
+    {post.message}
+  </CardText>
+  <CardActions expandable={true}>
+    <FlatButton label="MESSAGE via XBOX"/>
+  </CardActions>
+</Card>
+</div>
     })
 
     const sendMessage= (user) => (event) => {
