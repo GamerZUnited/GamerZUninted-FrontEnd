@@ -8,6 +8,13 @@ import DropDown from '../components/dropdown';
 import GamerTagField from '../components/newtextfield';
 import CommentField from '../components/commentstextfield';
 import FlatButton from 'material-ui/lib/flat-button';
+const Card = require('material-ui/lib/card/card');
+const CardActions = require('material-ui/lib/card/card-actions');
+const CardExpandable = require('material-ui/lib/card/card-expandable');
+const CardHeader = require('material-ui/lib/card/card-header');
+const CardMedia = require('material-ui/lib/card/card-media');
+const CardText = require('material-ui/lib/card/card-text');
+const CardTitle = require('material-ui/lib/card/card-title');
 // import DropDown from '../components/dropdown';
 
 import '../css/post.scss';
