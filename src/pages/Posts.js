@@ -4,14 +4,9 @@ import {pushState } from 'redux-router'
 import * as Actions from '../actions/AppActions'
 import _ from 'lodash'
 import * as Xbox from '../models/xbox';
-
-// Components
 import DropDown from '../components/dropdown';
 import GamerTagField from '../components/newtextfield';
 import CommentField from '../components/commentstextfield';
-import TopNav from '../components/topnav';
-
-// Material UI
 import FlatButton from 'material-ui/lib/flat-button';
 import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
@@ -22,6 +17,7 @@ import CardText from 'material-ui/lib/card/card-text';
 import CardTitle from 'material-ui/lib/card/card-title';
 import Avatar from 'material-ui/lib/avatar';
 
+import TopNav from '../components/topnav';
 // import DropDown from '../components/dropdown';
 
 import '../css/post.scss';
@@ -150,20 +146,8 @@ class Posts extends Component {
     }
 
     return (
-      <div>
-        <TopNav></TopNav>
-        <div className="inputForm">
-          <div>
-            <GamerTagField ref="gamerTag"/>
-            <br></br>
-            <DropDown className="dropdownmenuz" ref="gameName"/>
-            <br></br>
-            <CommentField ref="gameMessage"/>
-          </div>
-          <FlatButton label="SUBMIT" onClick={handleSetPost.bind(this)}/>
-        </div>
-
       <div className="overallApp">
+        <TopNav></TopNav>
         <Card initiallyExpanded={true}>
           <CardHeader
             title="Find A Group"
