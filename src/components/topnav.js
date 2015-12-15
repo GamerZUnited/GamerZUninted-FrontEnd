@@ -6,7 +6,7 @@ class TopNav extends React.Component {
   render() {
     return (
       <AppBar
-      title="Title"
+      title="GamerZUnited"
       iconClassNameRight="muidocs-icon-navigation-expand-more" />
     )
   }
