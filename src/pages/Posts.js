@@ -78,7 +78,10 @@ class Posts extends Component {
     {post.message}
   </CardText>
   <CardActions expandable={true}>
-    <FlatButton label="MESSAGE via XBOX"/>
+    <FlatButton label="MESSAGE via XBOX"
+      linkButton={true}
+      secondary={true}
+      href={gamerTagMessageLink}/>
   </CardActions>
 </Card>
 </div>
