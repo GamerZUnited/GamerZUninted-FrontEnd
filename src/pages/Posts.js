@@ -157,13 +157,13 @@ class Posts extends Component {
             className="titleheader"
             style={{
                   width: '75%',
-                  margin: '0 auto'
+                  margin: '0 auto',
                 }}>
           </CardHeader>
             <CardActions expandable={true}>
               <GamerTagField className="gamerTaginput" ref="gamerTag"/>
               <br></br>
-              <DropDown underlineStyle={{display: 'none'}} ref="gameName"/>
+              <DropDown ref="gameName"/>
               <br></br>
               <CommentField className="gamerCommentinput" ref="gameMessage"/>
               <br></br>
