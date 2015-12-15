@@ -72,7 +72,8 @@ class Posts extends Component {
     subtitle={post.gamerTag}
     avatar={gamerProfilePic}
     actAsExpander={true}
-    showExpandableButton={true}>
+    showExpandableButton={true}
+    className="posts">
   </CardHeader>
   <CardText expandable={true}>
     {post.message}
@@ -143,17 +144,30 @@ class Posts extends Component {
     }
 
     return (
-      <div>
-        <div className="inputForm">
-          <div>
-            <GamerTagField ref="gamerTag"/>
-            <br></br>
-            <DropDown className="dropdownmenuz" ref="gameName"/>
-            <br></br>
-            <CommentField ref="gameMessage"/>
-          </div>
-          <FlatButton label="SUBMIT" onClick={handleSetPost.bind(this)}/>
-        </div>
+      <div className="overallApp">
+        <Card initiallyExpanded={true}>
+          <CardHeader
+            title="Find A Group"
+            actAsExpander={true}
+            showExpandableButton={true}
+            avatar={<Avatar>LF</Avatar>}
+            className="titleheader"
+            style={{
+                  width: '75%',
+                  margin: '0 auto'
+                }}>
+          </CardHeader>
+            <CardActions expandable={true}>
+              <GamerTagField className="gamerTaginput" ref="gamerTag"/>
+              <br></br>
+              <DropDown underlineStyle={{display: 'none'}} ref="gameName"/>
+              <br></br>
+              <CommentField className="gamerCommentinput" ref="gameMessage"/>
+              <br></br>
+            <FlatButton label="SUBMIT" onClick={handleSetPost.bind(this)}/>
+              <br></br>
+            </CardActions>
+        </Card>
       {postsData}
       {messagesData}
       </div>

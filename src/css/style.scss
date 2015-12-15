@@ -339,23 +339,10 @@ form input[type="button"]:hover {
 }
 
 .posts {
-  border-radius: 3px;
-  width: 300px;
-  display: inline-block;
-  border: 2px solid #788C97;
+  color: blue;
+  background-color: #FF9800;
 }
 
-.postDiv {
-  display: inline-block;
-  margin: 0;
-  border-radius: 3px;
-  width: 300px;
-  background-color: black !important;
-}
-
-.postDiv:hover {
-  background-color: #C8DEF1 !important;
-}
 
 .postButton {
   background-color: #788C97;
@@ -380,10 +367,6 @@ p {
   font-size: 16px;
 }
 
-h1 {
-  color: white !important;
-}
-
 .dropdownmenuz {
   width: 366px !important;
   color: white !important;
@@ -392,10 +375,13 @@ h1 {
   border: none;
 }
 
-label {
-  color: white !important;
+.overallApp {
+  margin: 0;
+  @include breakpoint(425px) {
+    margin: auto 10%;
+   }
 }
 
-.inputForm {
-  margin-bottom: 10%;
+.dropdownmenuz {
+  background-color: red !important;
 }
