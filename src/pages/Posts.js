@@ -48,7 +48,7 @@ class Posts extends Component {
 
     const postsData = _.map(posts.toJS(), (post, key) => {
       var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
-      var gamerProfilePic = `http://avatar.xboxlive.com/avatar/${post.gamerTag}/avatar-body.png`;
+      var gamerProfilePic = `http://avatar.xboxlive.com/avatar/${post.gamerTag}/avatarpic-l.png`;
 
       console.log('GGGGGGGGGGG ===>', gamerCardData);
       var gamerCard = gamerCardData[post.gamerTag];
