@@ -17,7 +17,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   // background-image: url("http://static2.cdn.ubi.com/uk/FC4/background1.jpg");
   background-size: 100%;
-  background-color: gray;
+  background-color: #9A9C8C;
 }
 
 form {
@@ -339,10 +339,12 @@ form input[type="button"]:hover {
 }
 
 .posts {
-  color: blue;
-  background-color: #FF9800;
+  background-color: #FF9800 !important;
 }
 
+.appbar {
+  background-color: inherit !important;
+}
 
 .postButton {
   background-color: #788C97;
@@ -365,14 +367,6 @@ p {
 .userMessage {
   color: yellow !important;
   font-size: 16px;
-}
-
-.dropdownmenuz {
-  width: 366px !important;
-  color: white !important;
-  background-color: red;
-  border-radius: 6px;
-  border: none;
 }
 
 .overallApp {
