@@ -59,19 +59,20 @@ class Posts extends Component {
 
       return <div className="posts">
         <div className="postDiv"  key={key}>
-        <h1 className="gameTitle">{post.game}</h1>
-        <p className="userMessage">
+        <img className="avatarImg" src={gamerProfilePic} />
+        <div className="gameTitle">{post.game}</div>
+        <div className="userMessage">
           {post.message}
-        </p>
+        </div>
         <p>
+          <span>{post.gamerTag}</span>
           <a className="gamerTag-link" href={gamerTagMessageLink} target="_blank">
-            Message {post.gamerTag} via Xbox
+            <i className="fa fa-envelope-o"></i>
           </a>
         </p>
         <div className="x">
           <p>Tier: {gamerCard.tier}</p>
           <p>Gamerscore: {gamerCard.gamerscore}</p>
-          <img className="avatarImg" src={gamerProfilePic} />
         </div>
       </div>
     </div>
