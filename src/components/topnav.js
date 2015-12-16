@@ -8,7 +8,8 @@ class TopNav extends React.Component {
       <AppBar
       className="appbar"
       title="GamerZUnited"
-      iconClassNameRight="muidocs-icon-navigation-expand-more" />
+      iconClassNameRight="muidocs-icon-navigation-expand-more"
+      />
     )
   }
 }
