@@ -370,7 +370,7 @@ p {
 }
 
 .overallApp {
-  margin: 0;
+  margin: auto 10%;
   @include breakpoint(1.5dppx)  {
     margin: auto 10%;
    }
@@ -383,3 +383,23 @@ p {
 .topNavColor {
   color: #FF9800 !important;
 }
+
+.inputCard {
+  color: white !important;
+  background-color: #d3d3d3 !important;
+  margin: 1% 5%;
+  @include breakpoint(1138px)  {
+    margin: 2% 35%;
+   }
+}
+
+.submitbutton:hover {
+  background-color: #98fb98 !important;
+}
+
+.gamerTaginput {
+  color: white !important;
+}
+// .postCards {
+//   margin: auto 10%;
+// }
