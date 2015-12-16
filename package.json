@@ -10,7 +10,9 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "webpack": "webpack --progress --colors --watch "
+    "webpack": "webpack --progress --colors --watch ",
+    "build": "webpack",
+    "deploy": "npm run build && surge -p public -d glistening-support.surge.sh"
   },
   "dependencies": {
     "autoprefixer": "^6.0.3",

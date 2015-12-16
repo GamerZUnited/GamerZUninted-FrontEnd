@@ -1,6 +1,7 @@
 import styles from './css/style.scss'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import AppCanvas from 'material-ui/lib/app-canvas'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 
 
@@ -12,6 +13,6 @@ const store = configureStore()
 
 const targetEl = document.getElementById('root')
 
-const node = <App  store={store}/>
+const node =
+<App  store={store}/>
 ReactDOM.render(node, targetEl)
-

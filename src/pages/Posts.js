@@ -59,6 +59,7 @@ class Posts extends Component {
     const postsData = _.map(posts.toJS(), (post, key) => {
       var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
       var gamerProfilePic = `http://avatar.xboxlive.com/avatar/${post.gamerTag}/avatarpic-l.png`;
+      var gameBuyLink = `http://www.amazon.com/s/ref=nb_sb_ss_c_0_12/192-1526979-8063758?url=search-alias%3Daps&field-keywords=xbox+one+${post.game}`
 
       console.log('GGGGGGGGGGG ===>', gamerCardData);
       var gamerCard = gamerCardData[post.gamerTag];
@@ -67,8 +68,8 @@ class Posts extends Component {
         gamerCard = {tier: '', gamerscore: '', avatarBodyImagePath: ''};
       }
 
-      return <div>
-      <Card initiallyExpanded={true}>
+      return <div className="postCards">
+      <Card initiallyExpanded={false}>
   <CardHeader
     title={post.game}
     subtitle={post.gamerTag}
@@ -85,6 +86,10 @@ class Posts extends Component {
       linkButton={true}
       secondary={true}
       href={gamerTagMessageLink}/>
+    <FlatButton label="PURCHASE GAME @ Amazon"
+        linkButton={true}
+        primary={true}
+        href={gameBuyLink}/>
   </CardActions>
 </Card>
 </div>
@@ -160,14 +165,14 @@ class Posts extends Component {
                   margin: '0 auto',
                 }}>
           </CardHeader>
-            <CardActions expandable={true}>
+            <CardActions expandable={true} className="inputCard">
               <GamerTagField className="gamerTaginput" ref="gamerTag"/>
               <br></br>
-              <DropDown ref="gameName"/>
+              <DropDown className="dropdownele" ref="gameName"/>
               <br></br>
               <CommentField className="gamerCommentinput" ref="gameMessage"/>
               <br></br>
-            <FlatButton label="SUBMIT" onClick={handleSetPost.bind(this)}/>
+            <FlatButton className="submitbutton" label="SUBMIT" onClick={handleSetPost.bind(this)}/>
               <br></br>
             </CardActions>
         </Card>

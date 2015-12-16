@@ -29,11 +29,9 @@ class App extends React.Component {
   render () {
 
     return (
-      <div>
-        <Provider store={this.props.store}>
-          {this.renderRouter()}
-        </Provider>
-      </div>
+          <Provider store={this.props.store}>
+            {this.renderRouter()}
+          </Provider>
     );
   }
 

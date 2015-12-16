@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { Tabs } from "material-ui";
-import { Tab } from "material-ui";
+import Tabs from 'material-ui/lib/tabs/tabs';
+import Tab from 'material-ui/lib/tabs/tab';
 
 class TestComponent extends React.Component {
   render() {
     return (
-      <Tabs
-        valueLink={{value: this.state.tabsValue, requestChange: this._handleTabsChange.bind(this)}}>
+      <div>
+      <Tabs>
         <Tab label="Tab A" value="a" >
           (Tab content...)
         </Tab>
@@ -15,6 +15,7 @@ class TestComponent extends React.Component {
           (Tab content...)
         </Tab>
       </Tabs>
+    </div>
     )
   }
 }

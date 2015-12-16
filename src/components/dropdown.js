@@ -9,7 +9,7 @@ let menuItems = [
    { payload: '1', text: 'Game Option' },
    { payload: '1', text: 'Madden 16' },
    { payload: '2', text: 'Call of Duty: Black Ops 3' },
-   { payload: '3', text: 'GTA 5' },
+   { payload: '3', text: 'Destiny' },
    { payload: '4', text: 'Halo 5' },
    { payload: '5', text: 'Star Wars Battlefront' },
    { payload: '6', text: 'NBA 2K16' },
