@@ -17,7 +17,7 @@ export const signup = (firstName, lastName, email,  password, age) => dispatch =
   })
 
   // const data = {
-  //   first_name, last_name, email, username, password, age, sex
+  //   firstName, lastName, email, password, age
   // }
   // axios.post(URL+'/signup', data).then( result => {
   //   console.log('SIGNUP', result)

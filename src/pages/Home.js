@@ -30,16 +30,21 @@ class Home extends React.Component {
       dispatch(Actions.login(email.value, password.value))
     }
 
+    const gotoSignUp = (event) => {
+      dispatch(pushState(null,'/signup'))
+    }
+
 
 
     return (
       <div>
         <div>
           <form>
-            <label>Sign In Please!</label>
+            <label>Welcome to GamerZUnited</label>
             <input type="text" placeholder="email" ref="email" required></input>
             <input type="password" placeholder="password" ref="password" required></input>
             <input type="button" value="Log In" onClick={handleLogin}/>
+            <input type="button" value="Sign Up" onClick={gotoSignUp}/>
           </form>
         </div>
       </div>

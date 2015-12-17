@@ -21,6 +21,7 @@ class Signup extends React.Component {
       const { password, first_name, email, last_name, age} = this.refs
 
       dispatch(Actions.signup(first_name.value, last_name.value, email.value,  password.value, age.value))
+      dispatch(pushState(null,'/login'))
     }
 
     return (
