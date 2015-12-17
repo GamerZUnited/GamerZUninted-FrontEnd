@@ -14,7 +14,7 @@ class Login extends React.Component {
 
   componentWillReceiveProps(nextProps){
     const {dispatch} = this.props
-  
+
     if(nextProps.login.toJS().logged){
       dispatch(pushState(null,'/posts'))
     }
@@ -40,6 +40,9 @@ class Login extends React.Component {
             <input type="text" placeholder="email" ref="email" required></input>
             <input type="password" placeholder="password" ref="password" required></input>
             <input type="button" value="Log In" onClick={handleLogin}/>
+            <a href='/signup'>
+              <input type="button" value="Sign Up"/>
+            </a>
           </form>
         </div>
       </div>
