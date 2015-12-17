@@ -31,7 +31,7 @@ class Signup extends React.Component {
         <input type="text" placeholder="last Name" ref="last_name"/>
         <input type="text" placeholder="Email" ref="email"/>
         <input type="password" placeholder="Password" ref="password"/>
-        <input type="text" placeholder="GamerTag" ref="age"/>
+        <input type="text" placeholder="Age" ref="age"/>
         <input type="button" value="Sign Up" onClick={handleSignup}/>
       </form>
       </div>
