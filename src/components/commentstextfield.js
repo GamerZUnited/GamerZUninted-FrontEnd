@@ -21,8 +21,8 @@ class CommentField extends React.Component {
   render() {
     return (
       <TextField
-      hintText="What you are searching for!"
-      floatingLabelText="Search"
+      hintText="Multiplayer, help with a boss, etc"
+      floatingLabelText="What's your game objective?"
       multiLine={true}
       onChange={textChange}
       />

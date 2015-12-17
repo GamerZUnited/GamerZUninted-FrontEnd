@@ -393,13 +393,26 @@ p {
    }
 }
 
-.submitbutton:hover {
+.evenButton:hover {
+  background-color: #98fb98 !important;
+}
+
+.oddButton.evenButton:hover {
   background-color: #98fb98 !important;
 }
 
 .gamerTaginput {
   color: white !important;
 }
+
+.evenButton {
+  color: #FF9800 !important;
+}
+
+.oddButton {
+  color: #9A9C8C !important;
+}
+
 // .postCards {
 //   margin: auto 10%;
 // }

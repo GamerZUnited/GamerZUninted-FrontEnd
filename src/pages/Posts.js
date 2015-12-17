@@ -59,7 +59,10 @@ class Posts extends Component {
     const postsData = _.map(posts.toJS(), (post, key) => {
       var gamerTagMessageLink = `https://account.xbox.com/Messages?gamerTag=${post.gamerTag}`;
       var gamerProfilePic = `http://avatar.xboxlive.com/avatar/${post.gamerTag}/avatarpic-l.png`;
-      var gameBuyLink = `http://www.amazon.com/s/ref=nb_sb_ss_c_0_12/192-1526979-8063758?url=search-alias%3Daps&field-keywords=xbox+one+${post.game}`
+      var gameBuyLink = `http://www.amazon.com/s/ref=nb_sb_ss_c_0_12/192-1526979-8063758?url=search-alias%3Daps&field-keywords=xbox+one+${post.game}`;
+      var gameTrailer = `https://www.youtube.com/results?search_query=${post.game}+trailer`;
+      var addFriend = `https://account.xbox.com/en-US/Profile?GamerTag=${post.gamerTag}`;
+      var gameReview = `http://www.gamesradar.com/${post.game}-review/`
 
       console.log('GGGGGGGGGGG ===>', gamerCardData);
       var gamerCard = gamerCardData[post.gamerTag];
@@ -82,14 +85,34 @@ class Posts extends Component {
     {post.message}
   </CardText>
   <CardActions expandable={true}>
-    <FlatButton label="MESSAGE via XBOX"
+    <FlatButton
+      target="_blank"
+      className="oddButton"
+      label="MESSAGE via XBOX"
       linkButton={true}
       secondary={true}
       href={gamerTagMessageLink}/>
-    <FlatButton label="PURCHASE GAME @ Amazon"
-        linkButton={true}
-        primary={true}
-        href={gameBuyLink}/>
+    <FlatButton
+      target="_blank"
+      className="evenButton"
+      label="Add Friend on Xbox One"
+      linkButton={true}
+      primary={true}
+      href={addFriend}/>
+    <FlatButton
+      target="_blank"
+      className="oddButton"
+      label="PURCHASE GAME @ Amazon"
+      linkButton={true}
+      primary={true}
+      href={gameBuyLink}/>
+    <FlatButton
+      target="_blank"
+      className="evenButton"
+      label="GAME TRAILER"
+      linkButton={true}
+      primary={true}
+      href={gameTrailer}/>
   </CardActions>
 </Card>
 </div>
@@ -122,6 +145,8 @@ class Posts extends Component {
           <input style={{color:"black"}} type="button" onClick={sendMessage(user)} value='Send'/>
           <input style={{color:"black"}} type="button" onClick={getGamerTag('Slippingfever29')} value='Get GamerTag'/>
         </div>
+
+
       )
       // return(<div  key={key} style={{color: 'white'}}>
       //   <h1>{post.game}</h1>
